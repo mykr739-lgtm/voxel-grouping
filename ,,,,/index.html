@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VOXEL Grouping</title>
+<link rel="icon" type="image/png" href="sss.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-title">VOXEL</span>
+    <span class="brand-sub">Grouping</span>
+  </div>
+  <div class="logo">
+    <img src="sss.png" alt="VOXEL">
+  </div>
+</header>
+
+<div class="stats">
+  <div class="stat-card">
+    <span class="stat-num purple" id="statTotal">0</span>
+    <span class="stat-label">کل دانش‌آموزها</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num orange" id="statAssigned">0</span>
+    <span class="stat-label">گروه‌بندی شده</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-num purple" id="statGroups">0</span>
+    <span class="stat-label">تعداد گروه‌ها</span>
+  </div>
+</div>
+
+<main>
+  <section class="card">
+    <div class="card-head">
+      <span class="card-title">دانش‌آموزها</span>
+      <span class="badge" id="studentCount">0</span>
+    </div>
+    <div class="input-row">
+      <input id="newStudentInput" placeholder="اسم دانش‌آموز جدید..." onkeydown="if(event.key==='Enter')addStudent()">
+      <button class="btn btn-purple btn-icon" onclick="addStudent()"><i class="fa-solid fa-plus"></i></button>
+    </div>
+    <div class="student-list" id="studentList"></div>
+  </section>
+
+  <section class="card">
+    <div class="card-head">
+      <span class="card-title">گروه‌ها</span>
+      <button class="btn btn-purple btn-sm" onclick="addGroup()"><i class="fa-solid fa-plus"></i> گروه جدید</button>
+    </div>
+    <div class="groups-grid" id="groupsGrid"></div>
+  </section>
+</main>
+
+<footer>
+  ساخته شده توسط <span class="brand-foot">VOXEL Studio</span>
+</footer>
+
+<div class="modal-bg" id="aboutModal" onclick="if(event.target===this)closeAbout()">
+  <div class="modal">
+    <h3>درباره ما</h3>
+    <p class="modal-sub">سازندگان این پروژه</p>
+    <div class="creator"><i class="fa-solid fa-user"></i> محمد یزدان میرمحمدی</div>
+    <div class="creator"><i class="fa-solid fa-user"></i> محمدرضا سنجری پور</div>
+    <div class="creator"><i class="fa-solid fa-user"></i> طاها خسروی</div>
+    <div class="close-row">
+      <button class="btn btn-ghost btn-sm" onclick="closeAbout()">بستن</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-bg" id="addMemberModal" onclick="if(event.target===this)closeAddMember()">
+  <div class="modal member-modal">
+    <h3><i class="fa-solid fa-user-plus"></i> افزودن عضو</h3>
+    <p class="modal-sub">دانش‌آموز مورد نظر را انتخاب کنید</p>
+    <div class="search-row">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input type="text" id="memberSearchInput" placeholder="جستجوی اسم..." oninput="filterMembers()">
+    </div>
+    <div class="select-list" id="freeStudentsList"></div>
+    <div class="close-row">
+      <button class="btn btn-ghost btn-sm" onclick="closeAddMember()">بستن</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"><i class="fa-solid fa-check"></i><span></span></div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
